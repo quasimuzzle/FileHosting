@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rate File</title>
+</head>
+<body>
+    <h1>Rate File</h1>
+    <form method="post" action="{% url 'rate_file' file.id %}">
+        {% csrf_token %}
+        <input type="number" name="rating" min="1" max="5">
+        <button type="submit">Rate</button>
+    </form>
+</body>
+</html> 

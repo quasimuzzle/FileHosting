@@ -1,0 +1,23 @@
+<!-- templates/file_list.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File List</title>
+</head>
+<body>
+    <h1>File List</h1>
+    <ul>
+        {% for file in files %} 
+            <li><a href="{% url 'file_detail' file.id %}">{{ file.name }}</a></li>
+        {% endfor %}
+    </ul>
+
+   <!-- <h2>Upload File</h2> 
+    <form method="post" action="{% url 'upload_file' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="file">
+        <button type="submit">Upload File</button>
+    </form> --> 
+</body>
+</html> 
