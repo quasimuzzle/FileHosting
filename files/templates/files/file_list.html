@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>File List</title>
 </head>
 <body>
@@ -10,7 +11,7 @@
             <li><a href="{% url 'file_detail' file.id %}">{{ file.name }}</a></li>
         {% endfor %}
     </ul>
-
+  
     <h2>Upload File</h2> 
     <form method="post" action="{% url 'upload_file' %}" enctype="multipart/form-data">
         {% csrf_token %}
@@ -18,4 +19,4 @@
         <button type="submit">Upload File</button>
     </form> 
 </body>
-</html> 
+</html>
