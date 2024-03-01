@@ -17,7 +17,9 @@ def add_file(request):
     if request.method == 'POST':
         form = FileForm(request.POST, request.FILES)
         if form.is_valid():
-            file = form.save()
+            file = form.save(commit=False)
+            file.uploaded_by = request.user  # присваиваем текущего пользователя
+            file.save()
             return redirect('file_detail', file_id=file.pk)
     else:
         form = FileForm()

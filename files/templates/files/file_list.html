@@ -6,9 +6,19 @@
 </head>
 <body>
     <h1>File List</h1>
+    
+    <!-- Кнопка "Add File" -->
+    <a href="{% url 'add_file' %}">Add File</a>
+    
     <ul>
         {% for file in files %} 
-            <li><a href="{% url 'file_detail' file.id %}">{{ file.name }}</a></li>
+            <li>
+                <a href="{% url 'file_detail' file.id %}">{{ file.name }}</a>
+                <form method="post" action="{% url 'delete_file' file.id %}">
+                    {% csrf_token %}
+                    <button type="submit">Delete File</button>
+                </form>
+            </li>
         {% endfor %}
     </ul>
   
