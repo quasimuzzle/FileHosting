@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import File, Comment, Rating
 from .forms import FileForm, CommentForm
+from django.contrib.auth.decorators import login_required
 
 
 def file_list(request):
@@ -50,12 +51,15 @@ def add_rating(request, file_id):
         return redirect('file_detail', file_id=file_id)
     
 
+@login_required
 def upload_file(request):
-     if request.method == 'POST':
-         form = FileForm(request.POST, request.FILES)
-         if form.is_valid():
-             file = form.save()
-             return redirect('file_detail', file_id=file.pk)
-     else:
-         form = FileForm()
-     return render(request, 'files/upload_file.html', {'form': form})  
+    if request.method == 'POST':
+        form = FileForm(request.POST, request.FILES)
+        if form.is_valid():
+            new_file = form.save(commit=False)
+            new_file.uploaded_by = request.user
+            new_file.save()
+            return redirect('file_detail', file_id=new_file.pk)
+    else:
+        form = FileForm()
+    return render(request, 'files/upload_file.html', {'form': form})
