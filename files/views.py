@@ -57,7 +57,7 @@ def upload_file(request):
         form = FileForm(request.POST, request.FILES)
         if form.is_valid():
             new_file = form.save(commit=False)
-            new_file.uploaded_by = request.user
+            new_file.uploaded_by = request.user  # присваиваем полю uploaded_by текущего пользователя
             new_file.save()
             return redirect('file_detail', file_id=new_file.pk)
     else:
