@@ -10,3 +10,8 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['text']
+        
+class FileForm(forms.ModelForm):
+    class Meta:
+        model = File
+        fields = ['file']
