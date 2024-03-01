@@ -4,50 +4,71 @@
     <meta charset="UTF-8">
     <title>File Hosting</title>
     <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f3f3f3;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 3200px;
+            padding: 60px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
         .block {
             border: 1px solid black;
             padding: 10px;
             margin: 10px;
         }
+
         .authors {
             font-size: 12px;
         }
     </style>
 </head>
 <body>
-    <h1>File Hosting</h1>
-    <div class="block">
-        <h3 class="authors">Authors and contact information:</h3>
-        <ul class="authors">
-            <li>Anya Akhmyatzanova, quasimuzzle21@mail.ru, GitHub:<a href="https://github.com/quasimuzzle"> EmpyEmpt</a></li>
-            <li>Ilya Eliseev, 3mptlnessy@gmail.com GitHub:<a href="https://github.com/EmpyEmpt"> quasimuzzle</a></li>
-        </ul>
-    </div>
-    
-    <div class="block">
-        <h2>File List</h2>
+    <div class="container">
+        <h1>File Hosting</h1>
         
-        <!-- Кнопка "Add File" -->
-        <a href="{% url 'add_file' %}">Add File</a>
+        <div class="block">
+            <h2>File List</h2>
+            
+            <a href="{% url 'add_file' %}">Add File</a>
+            
+            <ul>
+                {% for file in files %} 
+                    <li>
+                        <a href="{% url 'file_detail' file.id %}">{{ file.name }}</a>
+                        <form method="post" action="{% url 'delete_file' file.id %}">
+                            {% csrf_token %}
+                            <button type="submit">Delete File</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+          
+            <h3>Upload File</h3> 
+            <form method="post" action="{% url 'upload_file' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="file" name="file">
+                <button type="submit">Upload File</button>
+            </form> 
+        </div>
         
-        <ul>
-            {% for file in files %} 
-                <li>
-                    <a href="{% url 'file_detail' file.id %}">{{ file.name }}</a>
-                    <form method="post" action="{% url 'delete_file' file.id %}">
-                        {% csrf_token %}
-                        <button type="submit">Delete File</button>
-                    </form>
-                </li>
-            {% endfor %}
-        </ul>
-      
-        <h3>Upload File</h3> 
-        <form method="post" action="{% url 'upload_file' %}" enctype="multipart/form-data">
-            {% csrf_token %}
-            <input type="file" name="file">
-            <button type="submit">Upload File</button>
-        </form> 
+        <div class="block">
+            <h3 class="authors">      Authors and contact information:</h3>
+            <ul class="authors">
+                <li>Anya Akhmyatzanova, quasimuzzle21@mail.ru, GitHub: <a href="https://github.com/quasimuzzle">EmpyEmpt</a></li>
+                <li>Ilya Eliseev, 3mptlnessy@gmail.com, GitHub: <a href="https://github.com/EmpyEmpt">quasimuzzle</a></li>
+            </ul>
+        </div>
     </div>
 </body>
 </html>
