@@ -2,31 +2,68 @@
 <html>
 <head>
     <title>File Detail</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f8f8f8;
+        }
+
+        .container {
+            max-width: 800px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: white;
+            text-align: center;
+        }
+
+        .save-file-button {
+            background-color: rgba(0, 255, 0, 0.5);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .save-file-button:hover {
+            background-color: rgba(0, 255, 0, 0.8);
+        }
+    </style>
 </head>
 <body>
-    <h1>{{ file.name }}</h1>
-    <p>{{ file.description }}</p>
-    
-    <h2>Comments</h2>
-    <ul>
-        {% for comment in comments %}
-            <li>{{ comment.text }}</li>
-        {% endfor %}
-    </ul>
-    
-    <h2>Rating: {{ file.average_rating }}</h2>
-    
-    <a href="{% url 'add_comment' file.id %}">Add a comment</a>
-    <form method="post" action="{% url 'add_rating' file.id %}">
-        {% csrf_token %}
-        <select name="rating">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-        <button type="submit">Rate</button>
-    </form>
+    <div class="container">
+        <h1>{{ file.name }}</h1>
+        <a href="{% url 'download_file' file.id %}"><button class="save-file-button">Save File</button></a>
+        <p>{{ file.description }}</p>
+        
+        <h2>Comments</h2>
+        <ul>
+            {% for comment in comments %}
+                <li>{{ comment.text }}</li>
+            {% endfor %}
+        </ul>
+        
+        <h2>Rating: {{ file.average_rating }}</h2>
+        
+        <a href="{% url 'add_comment' file.id %}">Add a comment</a>
+        <form method="post" action="{% url 'add_rating' file.id %}">
+            {% csrf_token %}
+            <select name="rating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <button type="submit">Rate</button>
+        </form>
+    </div>
 </body>
-</html> 
+</html>

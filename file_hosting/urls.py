@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.file_list, name='file_list'),
     path('file/<int:file_id>/', views.file_detail, name='file_detail'),
+    path('file/<int:file_id>/download/', views.download_file, name='download_file'),   
     path('file/add/', views.add_file, name='add_file'),
     path('file/<int:file_id>/delete/', views.delete_file, name='delete_file'),
     path('file/<int:file_id>/comment/', views.add_comment, name='add_comment'),

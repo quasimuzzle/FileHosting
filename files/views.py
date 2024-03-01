@@ -65,3 +65,10 @@ def upload_file(request):
     else:
         form = FileForm()
     return render(request, 'files/upload_file.html', {'form': form})
+
+def download_file(request, file_id):
+    file = File.objects.get(id=file_id)
+    response = HttpResponse(file.file, content_type='application/octet-stream')
+    response['Content-Disposition'] = f'attachment; filename={file.name}'
+    return response
+
