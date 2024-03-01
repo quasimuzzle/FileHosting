@@ -10,18 +10,17 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #CCC;
+            background-color: #f8f8f8;
             font-family: Comfortaa, sans-serif;
         }
 
         .container {
-            width: 100vw;
             max-width: 800px;
-            height: 100%;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #ddd;
             border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            text-align: center;
         }
 
         .block {
@@ -45,11 +44,13 @@
 
         .authors {
             font-size: 12px;
+            text-align: right; /* Выравнивание по правому краю */
+            line-height: normal; /* Стандартный межстрочный интервал */
         }
 
         button {
             background-color: rgba(255, 0, 0, 0.5);
-            color: white;
+            color: black;
             border: none;
             padding: 5px 10px;
             border-radius: 5px;
@@ -58,6 +59,14 @@
 
         button:hover {
             background-color: rgba(255, 0, 0, 1);
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        ul li {
+            margin-bottom: 30px; /* Увеличиваем расстояние между файлами */
         }
     </style>
 </head>
