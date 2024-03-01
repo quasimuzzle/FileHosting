@@ -15,8 +15,10 @@
         }
 
         .container {
-            max-width: 3200px;
-            padding: 60px;
+            width: 100vw;
+            max-width: 800px;
+            height: 100%;
+            padding: 20px;
             background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -40,6 +42,7 @@
         <div class="block">
             <h2>File List</h2>
             
+            <!-- Кнопка "Add File" -->
             <a href="{% url 'add_file' %}">Add File</a>
             
             <ul>
@@ -63,7 +66,7 @@
         </div>
         
         <div class="block">
-            <h3 class="authors">      Authors and contact information:</h3>
+            <h3 class="authors">Authors and contact information:</h3>
             <ul class="authors">
                 <li>Anya Akhmyatzanova, quasimuzzle21@mail.ru, GitHub: <a href="https://github.com/quasimuzzle">EmpyEmpt</a></li>
                 <li>Ilya Eliseev, 3mptlnessy@gmail.com, GitHub: <a href="https://github.com/EmpyEmpt">quasimuzzle</a></li>
