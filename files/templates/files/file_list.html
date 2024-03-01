@@ -12,7 +12,7 @@
     </ul>
 
     <h2>Upload File</h2> 
-    <form method="post" action="{% url 'upload_file' file_id=0 %}" enctype="multipart/form-data">
+    <form method="post" action="{% url 'upload_file' %}" enctype="multipart/form-data">
         {% csrf_token %}
         <input type="file" name="file">
         <button type="submit">Upload File</button>
