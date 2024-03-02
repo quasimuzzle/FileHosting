@@ -29,6 +29,8 @@ urlpatterns = [
     path('file/<int:file_id>/comment/', views.add_comment, name='add_comment'),
     path('file/<int:file_id>/rate/', views.add_rating, name='add_rating'),
     path('file/{file_id}/upload/', upload_file.upload_file, name='upload_file'),
-
+    path('signup/', views.signup_view, name='signup'),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
 
 ]
