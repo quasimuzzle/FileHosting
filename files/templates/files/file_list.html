@@ -84,7 +84,7 @@
             </div>
             
             <div class="block-content">
-                <a href="{% url 'add_file' %}">Add File</a>
+                
                 
                 <ul>
                     {% for file in files %} 
@@ -100,12 +100,12 @@
                     {% endfor %}
                 </ul>
               
-                <h3>Upload File</h3> 
+                <h3></h3> 
                 <form method="post" action="{% url 'upload_file' %}" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <input type="file" name="file">
+                    {{ form.as_p }}
                     <button type="submit">Upload File</button>
-                </form> 
+                </form>
             </div>
         </div>
         
