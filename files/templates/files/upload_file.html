@@ -1,14 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <title>Upload File</title>
+    <title>Upload File</title>
+    <style>
+        body {
+            background-color: #f8f8f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            max-width: 400px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: white;
+            text-align: center;
+        }
+
+        button {
+            background-color: rgba(0, 255, 0, 0.5);
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: rgba(0, 255, 0, 1);
+        }
+    </style>
 </head>
 <body>
-   <h1>Upload File</h1>
-   <form method="post" action="{% url 'upload_file' %}" enctype="multipart/form-data">
-       {% csrf_token %}
-       {{ form.as_p }}
-       <button type="submit">Upload File</button>
-   </form>
+    <form method="post" action="{% url 'upload_file' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload File</button>
+    </form>
 </body>
 </html>
