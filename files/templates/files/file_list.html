@@ -48,8 +48,8 @@
             line-height: normal; /* Стандартный межстрочный интервал */
         }
 
-        button {
-            background-color: rgba(255, 0, 0, 0.5);
+        button.upload-btn {
+            background-color: rgba(0, 255, 0, 0.5); /* Зеленый цвет */
             color: black;
             border: none;
             padding: 5px 10px;
@@ -57,8 +57,21 @@
             cursor: pointer;
         }
 
-        button:hover {
-            background-color: rgba(255, 0, 0, 1);
+        button.upload-btn:hover {
+            background-color: rgba(0, 255, 0, 1); /* Зеленый цвет при наведении */
+        }
+
+        button.delete-btn {
+            background-color: rgba(255, 0, 0, 0.5); /* Красный цвет */
+            color: black;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button.delete-btn:hover {
+            background-color: rgba(255, 0, 0, 1); /* Красный цвет при наведении */
         }
 
         ul {
@@ -68,10 +81,6 @@
         ul li {
             margin-bottom: 30px; 
         }
-
-        .upload-btn {
-           font-size: 1.7em; 
-       }
     </style>
 </head>
 <body>
@@ -97,7 +106,7 @@
                                 <span><a href="{% url 'file_detail' file.id %}">{{ file.name }}</a></span>
                                 <form method="post" action="{% url 'delete_file' file.id %}">
                                     {% csrf_token %}
-                                    <button type="submit">Delete File</button>
+                                    <button type="submit" class="delete-btn">Delete File</button>
                                 </form>
                             </div>
                         </li>
