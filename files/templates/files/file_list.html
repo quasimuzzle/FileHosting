@@ -68,6 +68,10 @@
         ul li {
             margin-bottom: 30px; /* Увеличиваем расстояние между файлами */
         }
+
+        .upload-btn {
+           font-size: 2em; /* Увеличиваем размер кнопки в два раза */
+       }
     </style>
 </head>
 <body>
@@ -104,7 +108,7 @@
                 <form method="post" action="{% url 'upload_file' %}" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <button type="submit">Upload File</button>
+                    <button type="submit" class="upload-btn">Upload File</button>
                 </form>
             </div>
         </div>
